@@ -91,7 +91,7 @@
       const ball = document.createElement('div');
       ball.classList.add('ball');
       ball.style.left = `${Math.random() * 100}vw`; // Náhodná pozice vodorovně
-      ball.style.backgroundColor = `rgba(${Math.random() * 255},${Math.random() * 255},${Math.random() * 255}, ${Math.random() * 0.5})`; // Náhodná barva s průhledností
+      ball.style.backgroundColor = `rgba(${Math.random() * 255},${Math.random() * 255},${Math.random() * 255}, ${Math.random() * 0.4})`; // Náhodná barva s průhledností
       ball.style.width = `${Math.random() * 30 + 10}px`; // Náhodná velikost kuličky (10px - 40px)
       ball.style.height = ball.style.width; // Upraví výšku na stejnou hodnotu jako šířka pro vytvoření kruhové kuličky
       ball.style.animationDuration = `${Math.random() * 5 + 2}s`; // Náhodná rychlost (2s - 7s)
@@ -106,7 +106,16 @@
     const morseRegex = /^[.-\s]+$/; // Regex pro kontrolu Morseovy abecedy
     if (morseRegex.test(morseInput)) {
       const morseMap = {
-        ".-": "A", "-...": "B", "-.-.": "C", "-..": "D", ".": "E", /*... až Z dle Morseovy abecedy*/
+        ".-": "A", "-...": "B", "-.-.": "C", "-..": "D", ".": "E",
+        "..-.": "F", "--.": "G", "....": "H", "..": "I", ".---": "J",
+        "-.-": "K", ".-..": "L", "--": "M", "-.": "N", "---": "O",
+        ".--.": "P", "--.-": "Q", ".-.": "R", "...": "S", "-": "T",
+        "..-": "U", "...-": "V", ".--": "W", "-..-": "X", "-.--": "Y",
+        "--..": "Z", ".----": "1", "..---": "2", "...--": "3", "....-": "4",
+        ".....": "5", "-....": "6", "--...": "7", "---..": "8", "----.": "9",
+        "-----": "0", ".-.-.-": ".", "--..--": ",", "..--..": "?", "-..-.": "/",
+        "-....-": "-", "-.--.": "(", "-.--.-": ")", ".----.": "'", "-.-.--": "!",
+        "-...-": "="
       };
 
       const morseCodes = morseInput.split(" ");
