@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Překrásná Morseova abeceda</title>
+  <title>Morseova abeceda</title>
   <style>
     body {
       margin: 0;
@@ -23,6 +23,7 @@
       box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
       max-width: 500px;
       position: relative;
+      margin: auto; /* Vycentrování vodorovně */
     }
     input[type="text"] {
       padding: 8px;
@@ -42,7 +43,7 @@
     }
     .ball-container {
       position: absolute;
-      top: -20px;
+      top: 0;
       left: 0;
       right: 0;
     }
@@ -56,11 +57,11 @@
 
     @keyframes fall {
       0% {
-        transform: translateY(-100vh);
+        transform: translateY(-10vh); /* Začátek mimo obrazovku */
         opacity: 0;
       }
       100% {
-        transform: translateY(100vh);
+        transform: translateY(110vh); /* Konec mimo obrazovku */
         opacity: 1;
       }
     }
@@ -89,13 +90,13 @@
 <script>
   function generateBalls() {
     const container = document.querySelector('.ball-container');
-    const numberOfBalls = 100; // Počet kuliček
+    const numberOfBalls = 200; // Počet kuliček
     for (let i = 0; i < numberOfBalls; i++) {
       const ball = document.createElement('div');
       ball.classList.add('ball');
       ball.style.left = `${Math.random() * 100}vw`; // Náhodná pozice vodorovně
       ball.style.backgroundColor = `rgba(${Math.random() * 255},${Math.random() * 255},${Math.random() * 255}, ${Math.random() * 0.7})`; // Náhodná barva s průhledností
-      ball.style.width = `${Math.random() * 30 + 10}px`; // Náhodná velikost kuličky (10px - 40px)
+      ball.style.width = `${Math.random() * 20 + 10}px`; // Náhodná velikost kuličky (10px - 30px)
       ball.style.height = ball.style.width; // Upraví výšku na stejnou hodnotu jako šířka pro vytvoření kruhové kuličky
       ball.style.animationDuration = `${Math.random() * 5 + 2}s`; // Náhodná rychlost (2s - 7s)
       container.appendChild(ball);
