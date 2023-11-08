@@ -44,14 +44,14 @@
       height: 20px;
       border-radius: 50%;
       background: #FFD700; /* Barva kuliček (žlutá) */
-      animation: jump 1s infinite; /* Animace skákání kuliček */
+      animation: fall 5s linear infinite; /* Animace padání kuliček */
     }
-    @keyframes jump {
-      0%, 100% {
-        transform: translateY(0) rotate(0deg);
+    @keyframes fall {
+      0% {
+        transform: translateY(-10vh) translateX(10vw);
       }
-      50% {
-        transform: translateY(-100px) rotate(360deg);
+      100% {
+        transform: translateY(110vh) translateX(-10vw);
       }
     }
   </style>
@@ -60,7 +60,8 @@
 
 <div class="container">
   <h1>Morseova abeceda</h1>
-  <input type="text" id="morseInput" placeholder="Zadejte text v Morseově abecedě">
+  <p>Zadejte znaky Morseovy abecedy (. nebo -) oddělené mezerou.</p>
+  <input type="text" id="morseInput" placeholder="Např. .- .- -... -.-.">
   <br>
   <button onclick="convertMorse()">Převést</button>
 </div>
@@ -68,13 +69,12 @@
 <!-- Generování padajících kuliček -->
 <script>
   function generateBalls() {
-    const container = document.querySelector('.container');
+    const container = document.querySelector('body');
     const numberOfBalls = 30; // Počet kuliček
     for (let i = 0; i < numberOfBalls; i++) {
       const ball = document.createElement('div');
       ball.classList.add('ball');
       ball.style.left = `${Math.random() * 100}vw`; // Náhodná pozice vodorovně
-      ball.style.animationDuration = `${Math.random() * 3 + 2}s`; // Náhodná rychlost padání
       container.appendChild(ball);
     }
   }
@@ -91,10 +91,21 @@
         ".-": "A", "-...": "B", "-.-.": "C", "-..": "D", ".": "E", /*... až Z dle Morseovy abecedy*/
       };
 
-      const result = morseInput.split(" ").map(code => morseMap[code]).join("");
-      alert("Přeloženo: " + result);
+      const morseCodes = morseInput.split(" ");
+      let result = '';
+      for (let code of morseCodes) {
+        if (morseMap[code]) {
+          result += morseMap[code];
+        }
+      }
+
+      if (result !== '') {
+        alert("Přeloženo: " + result);
+      } else {
+        alert("Zadávejte platné znaky Morseovy abecedy: .-");
+      }
     } else {
-      alert("Zadávejte pouze znaky Morseovy abecedy: .-");
+      alert("Zadávejte platné znaky Morseovy abecedy: .-");
     }
   }
 </script>
