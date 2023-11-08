@@ -1,12 +1,55 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Pejskové</title>
+  <meta charset="UTF-8">
+  <title>Převod do Morseovy abecedy</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      text-align: center;
+      margin-top: 50px;
+    }
+    input, button {
+      padding: 8px;
+      margin: 5px;
+    }
+  </style>
 </head>
 <body>
-    <h1>se koušou</h1>
+
+<h1>Převod do Morseovy abecedy</h1>
+
+<input type="text" id="inputText" placeholder="Zadejte text v Morseově abecedě">
+<button onclick="convertToText()">Převést</button>
+
+<script>
+function convertToText() {
+  const input = document.getElementById('inputText').value.trim();
+  const morseAlphabet = {
+    ".-": "A", "-...": "B", "-.-.": "C", "-..": "D", ".": "E", "..-.": "F",
+    "--.": "G", "....": "H", "..": "I", ".---": "J", "-.-": "K", ".-..": "L",
+    "--": "M", "-.": "N", "---": "O", ".--.": "P", "--.-": "Q", ".-.": "R",
+    "...": "S", "-": "T", "..-": "U", "...-": "V", ".--": "W", "-..-": "X",
+    "-.--": "Y", "--..": "Z", "-----": "0", ".----": "1", "..---": "2",
+    "...--": "3", "....-": "4", ".....": "5", "-....": "6", "--...": "7",
+    "---..": "8", "----.": "9"
+  };
+
+  const words = input.split(" ");
+  let result = "";
+
+  for (let i = 0; i < words.length; i++) {
+    if (morseAlphabet[words[i]]) {
+      result += morseAlphabet[words[i]];
+    } else {
+      alert("Neplatný znak v Morseově abecedě: " + words[i]);
+      return;
+    }
+  }
+
+  alert("Přeloženo: " + result);
+}
+</script>
+
 </body>
 </html>
