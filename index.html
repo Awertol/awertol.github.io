@@ -47,7 +47,7 @@
       width: 20px;
       height: 20px;
       border-radius: 50%;
-      animation: fall 6s linear infinite; /* Animace padání kuliček */
+      animation: fall linear infinite; /* Animace padání kuliček */
     }
 
     @keyframes fall {
@@ -60,6 +60,20 @@
         opacity: 1;
       }
     }
+
+    .ball:nth-child(1) {
+      animation-duration: 2s;
+    }
+
+    .ball:nth-child(2) {
+      animation-duration: 3s;
+    }
+
+    .ball:nth-child(3) {
+      animation-duration: 4s;
+    }
+
+    /* ... až do potřebného počtu různých rychlostí */
   </style>
 </head>
 <body>
@@ -100,22 +114,8 @@
 
       const morseCodes = morseInput.split(" ");
       let result = '';
-      for (let code of morseCodes) {
-        if (morseMap[code]) {
-          result += morseMap[code];
-        }
-      }
+      for (
 
-      if (result !== '') {
-        alert("Přeloženo: " + result);
-      } else {
-        alert("Zadávejte platné znaky Morseovy abecedy: .-");
-      }
-    } else {
-      alert("Zadávejte platné znaky Morseovy abecedy: .-");
-    }
-  }
-</script>
 
-</body>
-</html>
+
+
