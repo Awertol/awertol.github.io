@@ -14,9 +14,13 @@
       background: radial-gradient(at top, #8A2BE2, #00FFFF); /* Gradient - fialová do tyrkysové */
       font-family: Arial, sans-serif;
       overflow: hidden; /* Skryje přebytečné kuličky, které by mohly být mimo obrazovku */
+      position: relative;
     }
     .container {
-      position: relative;
+      position: absolute;
+      top: 0;
+      left: 50%;
+      transform: translateX(-50%);
       text-align: center;
       padding: 20px;
       border-radius: 10px;
@@ -49,10 +53,10 @@
 
     @keyframes fall {
       0% {
-        transform: translateY(-10vh) translateX(10vw);
+        transform: translateY(-50vh) translateX(-50%);
       }
       100% {
-        transform: translateY(110vh) translateX(-10vw);
+        transform: translateY(150vh) translateX(calc(-50% + 100vw * Math.random()));
       }
     }
   </style>
@@ -76,18 +80,12 @@
       const ball = document.createElement('div');
       ball.classList.add('ball');
       ball.style.left = `${Math.random() * 100}vw`; // Náhodná pozice vodorovně
-      ball.style.width = `${Math.random() * 20}px`; // Náhodná velikost kuličky
-      ball.style.height = `${Math.random() * 20}px`; // Náhodná velikost kuličky
-      ball.style.animationDuration = `${Math.random() * 3 + 2}s`; // Náhodná rychlost padání
-      ball.style.backgroundColor = `rgba(${Math.random() * 255},${Math.random() * 255},${Math.random() * 255}, ${Math.random()})`; // Náhodná barva
       container.appendChild(ball);
     }
   }
 
   window.onload = generateBalls;
-</script>
 
-<script>
   function convertMorse() {
     const morseInput = document.getElementById('morseInput').value.trim();
     const morseRegex = /^[.-\s]+$/; // Regex pro kontrolu Morseovy abecedy
