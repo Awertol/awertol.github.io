@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Překrásná Morseova abeceda</title>
+  <title>Morseova abeceda</title>
   <style>
     body {
       margin: 0;
@@ -41,6 +41,7 @@
       width: 200px;
       border-radius: 5px;
       border: 1px solid #ccc;
+      z-index: 2; /* Povýšení textboxu nad kuličky */
     }
     button {
       padding: 12px 24px;
@@ -50,6 +51,7 @@
       color: white;
       cursor: pointer;
       font-size: 18px; /* Zvětšení fontu tlačítka */
+      z-index: 2; /* Povýšení tlačítka nad kuličky */
     }
     .ball-container {
       position: fixed;
@@ -57,6 +59,7 @@
       left: 0;
       right: 0;
       height: 100vh;
+      z-index: 0; /* Snížení kuliček, aby byly za obsahem */
     }
     .ball {
       position: absolute;
@@ -64,6 +67,7 @@
       height: 20px;
       border-radius: 50%;
       animation: fall linear infinite; /* Animace padání kuliček */
+      z-index: 0; /* Snížení kuliček, aby byly za obsahem */
     }
 
     @keyframes fall {
