@@ -32,6 +32,8 @@
       display: flex;
       flex-direction: column;
       align-items: center; /* Svislé vycentrování */
+      position: relative;
+      z-index: 1;
     }
     input[type="text"] {
       padding: 8px;
@@ -106,7 +108,7 @@
       const ball = document.createElement('div');
       ball.classList.add('ball');
       ball.style.left = `${Math.random() * 100}vw`; // Náhodná pozice vodorovně
-      ball.style.backgroundColor = `rgba(${Math.random() * 255},${Math.random() * 255},${Math.random() * 255}, ${Math.random() * 0.5})`; // Náhodná barva s průhledností
+      ball.style.backgroundColor = `rgba(${Math.random() * 255},${Math.random() * 255},${Math.random() * 255}, ${Math.random() * 0.7})`; // Náhodná barva s průhledností
       ball.style.width = `${Math.random() * 20 + 10}px`; // Náhodná velikost kuličky (10px - 30px)
       ball.style.height = ball.style.width; // Upraví výšku na stejnou hodnotu jako šířka pro vytvoření kruhové kuličky
       ball.style.animationDuration = `${Math.random() * 5 + 2}s`; // Náhodná rychlost (2s - 7s)
