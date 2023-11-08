@@ -2,53 +2,101 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Převod do Morseovy abecedy</title>
+  <title>Morseova abeceda</title>
   <style>
     body {
       font-family: Arial, sans-serif;
       text-align: center;
       margin-top: 50px;
     }
-    input, button {
-      padding: 8px;
-      margin: 5px;
+    input[type="text"] {
+      padding: 10px;
+      margin: 10px;
+      width: 200px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+    }
+    button {
+      padding: 10px 20px;
+      border: none;
+      background-color: #007bff;
+      color: white;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+    button:hover {
+      background-color: #0056b3;
     }
   </style>
 </head>
 <body>
 
-<h1>Převod do Morseovy abecedy</h1>
+<h1>Morseova abeceda</h1>
 
-<input type="text" id="inputText" placeholder="Zadejte text v Morseově abecedě">
-<button onclick="convertToText()">Převést</button>
+<input type="text" id="morseInput" placeholder="Zadejte text v Morseově abecedě">
+<button onclick="convertMorse()">Přeložit</button>
 
 <script>
-function convertToText() {
-  const input = document.getElementById('inputText').value.trim();
-  const morseAlphabet = {
-    ".-": "A", "-...": "B", "-.-.": "C", "-..": "D", ".": "E", "..-.": "F",
-    "--.": "G", "....": "H", "..": "I", ".---": "J", "-.-": "K", ".-..": "L",
-    "--": "M", "-.": "N", "---": "O", ".--.": "P", "--.-": "Q", ".-.": "R",
-    "...": "S", "-": "T", "..-": "U", "...-": "V", ".--": "W", "-..-": "X",
-    "-.--": "Y", "--..": "Z", "-----": "0", ".----": "1", "..---": "2",
-    "...--": "3", "....-": "4", ".....": "5", "-....": "6", "--...": "7",
-    "---..": "8", "----.": "9"
-  };
+  function convertMorse() {
+    const morseInput = document.getElementById('morseInput').value.trim();
+    const morseAlphabet = {
+      ".-": "A",
+      "-...": "B",
+      "-.-.": "C",
+      "-..": "D",
+      ".": "E",
+      "..-.": "F",
+      "--.": "G",
+      "....": "H",
+      "..": "I",
+      ".---": "J",
+      "-.-": "K",
+      ".-..": "L",
+      "--": "M",
+      "-.": "N",
+      "---": "O",
+      ".--.": "P",
+      "--.-": "Q",
+      ".-.": "R",
+      "...": "S",
+      "-": "T",
+      "..-": "U",
+      "...-": "V",
+      ".--": "W",
+      "-..-": "X",
+      "-.--": "Y",
+      "--..": "Z",
+      ".----": "1",
+      "..---": "2",
+      "...--": "3",
+      "....-": "4",
+      ".....": "5",
+      "-....": "6",
+      "--...": "7",
+      "---..": "8",
+      "----.": "9",
+      "-----": "0",
+      "/": " ",
+      "": " "
+    };
 
-  const words = input.split(" ");
-  let result = "";
-
-  for (let i = 0; i < words.length; i++) {
-    if (morseAlphabet[words[i]]) {
-      result += morseAlphabet[words[i]];
-    } else {
-      alert("Neplatný znak v Morseově abecedě: " + words[i]);
-      return;
+    let result = "";
+    const words = morseInput.split(" / ");
+    for (let i = 0; i < words.length; i++) {
+      const letters = words[i].split(" ");
+      for (let j = 0; j < letters.length; j++) {
+        if (morseAlphabet[letters[j]]) {
+          result += morseAlphabet[letters[j]];
+        } else {
+          alert("Neplatný vstup Morseovy abecedy!");
+          return;
+        }
+      }
+      result += " ";
     }
-  }
 
-  alert("Přeloženo: " + result);
-}
+    alert("Přeložený text: " + result);
+  }
 </script>
 
 </body>
