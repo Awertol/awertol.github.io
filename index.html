@@ -23,9 +23,11 @@
       box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
       max-width: 500px;
       position: relative;
+      top: 50%; /* Vycentrování obsahu */
+      left: 50%; /* Vycentrování obsahu */
+      transform: translate(-50%, -50%); /* Vynulování posunutí */
       display: flex;
       flex-direction: column;
-      justify-content: center; /* Vodorovné vycentrování */
       align-items: center; /* Svislé vycentrování */
     }
     input[type="text"] {
