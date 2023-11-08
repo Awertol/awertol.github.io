@@ -11,10 +11,12 @@
       display: flex;
       justify-content: center;
       align-items: center;
-      background: linear-gradient(to bottom right, #00FFFF, #800080); /* Tyrkysová a purpurová */
+      background: radial-gradient(at top, #8A2BE2, #00FFFF); /* Gradient - fialová do tyrkysové */
       font-family: Arial, sans-serif;
+      overflow: hidden; /* Skryje přebytečné kuličky, které by mohly být mimo obrazovku */
     }
     .container {
+      position: relative;
       text-align: center;
       padding: 20px;
       border-radius: 10px;
@@ -36,6 +38,22 @@
       color: white;
       cursor: pointer;
     }
+    .ball {
+      position: absolute;
+      width: 20px;
+      height: 20px;
+      border-radius: 50%;
+      background: #FFD700; /* Barva kuliček (žlutá) */
+      animation: jump 1s infinite; /* Animace skákání kuliček */
+    }
+    @keyframes jump {
+      0%, 100% {
+        transform: translateY(0) rotate(0deg);
+      }
+      50% {
+        transform: translateY(-100px) rotate(360deg);
+      }
+    }
   </style>
 </head>
 <body>
@@ -46,6 +64,23 @@
   <br>
   <button onclick="convertMorse()">Převést</button>
 </div>
+
+<!-- Generování padajících kuliček -->
+<script>
+  function generateBalls() {
+    const container = document.querySelector('.container');
+    const numberOfBalls = 30; // Počet kuliček
+    for (let i = 0; i < numberOfBalls; i++) {
+      const ball = document.createElement('div');
+      ball.classList.add('ball');
+      ball.style.left = `${Math.random() * 100}vw`; // Náhodná pozice vodorovně
+      ball.style.animationDuration = `${Math.random() * 3 + 2}s`; // Náhodná rychlost padání
+      container.appendChild(ball);
+    }
+  }
+
+  window.onload = generateBalls;
+</script>
 
 <script>
   function convertMorse() {
