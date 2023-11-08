@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Překrásná morseova abeceda</title>
+  <title>Morseova abeceda</title>
   <style>
     body {
       margin: 0;
@@ -32,12 +32,13 @@
       border: 1px solid #ccc;
     }
     button {
-      padding: 8px 20px;
+      padding: 12px 24px;
       border: none;
       border-radius: 5px;
       background-color: #4CAF50;
       color: white;
       cursor: pointer;
+      font-size: 18px; /* Zvětšení fontu tlačítka */
     }
     .ball-container {
       position: absolute;
@@ -64,7 +65,6 @@
       }
     }
     .morse-alphabet {
-      width: 100%;
       max-width: 500px;
       margin-bottom: 20px;
     }
@@ -79,7 +79,9 @@
   <br>
   <button onclick="convertMorse()">Převést</button>
   <div class="ball-container"></div>
-  <img class="morse-alphabet" src="https://upload.wikimedia.org/wikipedia/commons/thumb/b/b5/International_Morse_Code.svg/800px-International_Morse_Code.svg.png" alt="Morseova abeceda">
+  <div class="morse-alphabet">
+    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/b/b5/International_Morse_Code.svg/800px-International_Morse_Code.svg.png" alt="Morseova abeceda">
+  </div>
 </div>
 
 <!-- Generování padajících kuliček -->
@@ -91,7 +93,7 @@
       const ball = document.createElement('div');
       ball.classList.add('ball');
       ball.style.left = `${Math.random() * 100}vw`; // Náhodná pozice vodorovně
-      ball.style.backgroundColor = `rgba(${Math.random() * 255},${Math.random() * 255},${Math.random() * 255}, ${Math.random() * 0.4})`; // Náhodná barva s průhledností
+      ball.style.backgroundColor = `rgba(${Math.random() * 255},${Math.random() * 255},${Math.random() * 255}, ${Math.random() * 0.7})`; // Náhodná barva s průhledností
       ball.style.width = `${Math.random() * 30 + 10}px`; // Náhodná velikost kuličky (10px - 40px)
       ball.style.height = ball.style.width; // Upraví výšku na stejnou hodnotu jako šířka pro vytvoření kruhové kuličky
       ball.style.animationDuration = `${Math.random() * 5 + 2}s`; // Náhodná rychlost (2s - 7s)
@@ -116,6 +118,7 @@
         "-----": "0", ".-.-.-": ".", "--..--": ",", "..--..": "?", "-..-.": "/",
         "-....-": "-", "-.--.": "(", "-.--.-": ")", ".----.": "'", "-.-.--": "!",
         "-...-": "="
+        // Doplnění ostatních znaků Morseovy abecedy
       };
 
       const morseCodes = morseInput.split(" ");
