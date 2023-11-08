@@ -42,6 +42,12 @@
       color: white;
       cursor: pointer;
     }
+    .ball-container {
+      position: absolute;
+      top: -20px;
+      left: 0;
+      right: 0;
+    }
     .ball {
       position: absolute;
       width: 20px;
@@ -70,18 +76,19 @@
   <input type="text" id="morseInput" placeholder="Např. .- .- -... -.-.">
   <br>
   <button onclick="convertMorse()">Převést</button>
+  <div class="ball-container"></div>
 </div>
 
 <!-- Generování padajících kuliček -->
 <script>
   function generateBalls() {
-    const container = document.querySelector('body');
+    const container = document.querySelector('.ball-container');
     const numberOfBalls = 100; // Počet kuliček
     for (let i = 0; i < numberOfBalls; i++) {
       const ball = document.createElement('div');
       ball.classList.add('ball');
       ball.style.left = `${Math.random() * 100}vw`; // Náhodná pozice vodorovně
-      ball.style.backgroundColor = `rgba(${Math.random() * 255},${Math.random() * 255},${Math.random() * 255}, ${Math.random()})`; // Náhodná barva
+      ball.style.backgroundColor = `rgba(${Math.random() * 255},${Math.random() * 255},${Math.random() * 255}, ${Math.random() * 0.7})`; // Náhodná barva s průhledností
       ball.style.width = `${Math.random() * 30 + 10}px`; // Náhodná velikost kuličky (10px - 40px)
       ball.style.height = ball.style.width; // Upraví výšku na stejnou hodnotu jako šířka pro vytvoření kruhové kuličky
       ball.style.animationDuration = `${Math.random() * 5 + 2}s`; // Náhodná rychlost (2s - 7s)
