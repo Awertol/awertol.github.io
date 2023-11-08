@@ -15,6 +15,13 @@
       overflow: hidden;
       height: 100vh;
     }
+    .content-wrapper {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      width: 100%;
+      height: 100%;
+    }
     .container {
       text-align: center;
       padding: 20px;
@@ -22,10 +29,6 @@
       background: white;
       box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
       max-width: 500px;
-      position: relative;
-      top: 50%; /* Vycentrování obsahu */
-      left: 50%; /* Vycentrování obsahu */
-      transform: translate(-50%, -50%); /* Vynulování posunutí */
       display: flex;
       flex-direction: column;
       align-items: center; /* Svislé vycentrování */
@@ -47,11 +50,11 @@
       font-size: 18px; /* Zvětšení fontu tlačítka */
     }
     .ball-container {
-      position: absolute;
+      position: fixed;
       top: 0;
       left: 0;
       right: 0;
-      width: 100vw; /* Napnutí na celou šířku obrazovky */
+      height: 100vh;
     }
     .ball {
       position: absolute;
@@ -80,15 +83,17 @@
 </head>
 <body>
 
-<div class="container">
-  <h1>Morseova abeceda</h1>
-  <p>Zadejte znaky Morseovy abecedy (. nebo -) oddělené mezerou.</p>
-  <input type="text" id="morseInput" placeholder="Např. .- .- -... -.-.">
-  <br>
-  <button onclick="convertMorse()">Převést</button>
-  <div class="ball-container"></div>
-  <div class="morse-alphabet">
-    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/b/b5/International_Morse_Code.svg/800px-International_Morse_Code.svg.png" alt="Morseova abeceda">
+<div class="content-wrapper">
+  <div class="container">
+    <h1>Morseova abeceda</h1>
+    <p>Zadejte znaky Morseovy abecedy (. nebo -) oddělené mezerou.</p>
+    <input type="text" id="morseInput" placeholder="Např. .- .- -... -.-.">
+    <br>
+    <button onclick="convertMorse()">Převést</button>
+    <div class="ball-container"></div>
+    <div class="morse-alphabet">
+      <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/b/b5/International_Morse_Code.svg/800px-International_Morse_Code.svg.png" alt="Morseova abeceda">
+    </div>
   </div>
 </div>
 
