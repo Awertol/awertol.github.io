@@ -114,8 +114,22 @@
 
       const morseCodes = morseInput.split(" ");
       let result = '';
-      for (
+      for (let code of morseCodes) {
+        if (morseMap[code]) {
+          result += morseMap[code];
+        }
+      }
 
+      if (result !== '') {
+        alert("Přeloženo: " + result);
+      } else {
+        alert("Zadávejte platné znaky Morseovy abecedy: .-");
+      }
+    } else {
+      alert("Zadávejte platné znaky Morseovy abecedy: .-");
+    }
+  }
+</script>
 
-
-
+</body>
+</html>
