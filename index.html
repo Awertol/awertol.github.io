@@ -11,9 +11,9 @@
       display: flex;
       justify-content: center;
       align-items: center;
-      background: radial-gradient(at top, #8A2BE2, #00FFFF); /* Gradient - fialová do tyrkysové */
+      background: radial-gradient(at top, #8A2BE2, #00FFFF); /* Fialová do tyrkysového gradientu */
       font-family: Arial, sans-serif;
-      overflow: hidden; /* Skryje přebytečné kuličky, které by mohly být mimo obrazovku */
+      overflow: hidden;
       position: relative;
     }
     .container {
@@ -44,19 +44,20 @@
     }
     .ball {
       position: absolute;
-      width: 10px;
-      height: 10px;
+      width: 20px;
+      height: 20px;
       border-radius: 50%;
-      background: rgba(255, 215, 0, 0.8); /* Transparentní žlutá kulička */
       animation: fall 6s linear infinite; /* Animace padání kuliček */
     }
 
     @keyframes fall {
       0% {
-        transform: translateY(-50vh) translateX(-50%);
+        transform: translateY(-10vh);
+        opacity: 0;
       }
       100% {
-        transform: translateY(150vh) translateX(calc(-50% + 100vw * Math.random()));
+        transform: translateY(110vh);
+        opacity: 1;
       }
     }
   </style>
@@ -75,11 +76,14 @@
 <script>
   function generateBalls() {
     const container = document.querySelector('body');
-    const numberOfBalls = 50; // Počet kuliček
+    const numberOfBalls = 100; // Počet kuliček
     for (let i = 0; i < numberOfBalls; i++) {
       const ball = document.createElement('div');
       ball.classList.add('ball');
       ball.style.left = `${Math.random() * 100}vw`; // Náhodná pozice vodorovně
+      ball.style.backgroundColor = `rgba(${Math.random() * 255},${Math.random() * 255},${Math.random() * 255}, ${Math.random()})`; // Náhodná barva
+      ball.style.width = `${Math.random() * 30 + 10}px`; // Náhodná velikost kuličky (10px - 40px)
+      ball.style.height = ball.style.width; // Upraví výšku na stejnou hodnotu jako šířka pro vytvoření kruhové kuličky
       container.appendChild(ball);
     }
   }
